@@ -1,0 +1,39 @@
+<div>
+        <div class="container">
+            <form #addForm=ngForm (ngSubmit)="Add()" class="was-validated">
+                <div class="form-group">
+                    Employee Id:<input type="number" name="employeeId" id="employeeId" [(ngModel)]="claim.employeeId"
+                        #eid="ngModel" class="form-control" readonly required pattern="^[1-9]\d*$">
+                </div>
+                <div class="form-group">
+                    Project Code:<input type="number" name="projectCode" id="projectCode" [(ngModel)]="claim.projectCode"
+                        #pcode="ngModel" class="form-control" readonly required pattern="^[1-9]\d*$">
+                </div>
+                <div class="form-group">
+                    Expense Code:<input type="number" name="expenseCode" id="expenseCode" [(ngModel)]="claim.expenseCode"
+                        #ecode="ngModel" class="form-control" readonly required pattern="^[1-9]\d*$">
+                </div>
+                <div class="form-group">
+                    Start Date:<input type="date" name="startDate" id="startDate" [(ngModel)]="claim.startDate"
+                        #sdate="ngModel" class="form-control" (blur)="compareStart()" required/>
+                        <span  *ngIf="sdate.errors?.required" class="invalid-feedback">Employee Birth Date is required</span> 
+                </div>
+                <div class="form-group">
+                    End Date:<input type="date" name="endDate" id="endDate" [(ngModel)]="claim.endDate" #edate="ngModel"
+                        class="form-control" (blur)="compareEnd()" required/>
+                        <span *ngIf="edate.errors?.required" class="invalid-feedback" >Employee Birth Date is required</span> 
+                </div>
+                <div class="form-group">
+                    Expense Amount:<input type="number" name="expenseAmount" id="expenseAmount"
+                        [(ngModel)]="claim.expenseAmount" #expenseAmount="ngModel" class="form-control" required pattern="^[1-9]\d*$">
+                    <span *ngIf="expenseAmount.touched&&expenseAmount.errors?.required" class="invalid-feedback">Expense Amount is
+                        required</span>
+                    <span *ngIf="expenseAmount.dirty&&expenseAmount.errors?.pattern" class="alert alert-danger">Invalid Amount</span>
+                </div>
+                <br>
+                <button class="btn btn-primary" type="submit" [disabled]="addForm.invalid">Add Claim</button>
+            </form>
+    
+        </div>
+    </div>
+    

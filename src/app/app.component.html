@@ -1,0 +1,31 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+
+</div>
+<div class="container">
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <!-- <a class="navbar-brand" href="#">Expense</a> -->
+    <ul class="navbar-nav">
+      <li class="nav-item  ">
+        <a class="nav-link" routerLink="add">Add Claim</a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" routerLink="update">Update Claim</a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" routerLink="delete">Delete Claim</a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" routerLink="view">View Claim</a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" routerLink="viewall">View All Claims</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+<!-- <button class="btn btn-primary" routerLink="update">Search</button> -->
+<router-outlet></router-outlet>

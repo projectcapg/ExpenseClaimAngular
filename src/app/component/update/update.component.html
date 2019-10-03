@@ -1,0 +1,74 @@
+<div class="container" style="text-align:center">
+    <br>
+    <label class="">
+        <h5>Update Expense</h5>
+    </label><br>
+    <br>
+    <input class="form-control" type="text" #searchdata required placeholder="Enter ExpenseID"><br><br>
+
+    <button (click)="filterData(searchdata.value)" class="btn btn-primary">Search</button><br>
+
+</div>
+
+
+<div *ngIf="flag">
+
+    <!-- <table class="table table-dark">
+        <td>{{claim.expenseCodeId}}</td>
+        <td>{{claim.employeeId}}</td>
+        <td>{{claim.projectCode}}</td>
+        <td>{{claim.expenseCode}}</td>
+        <td>{{claim.startDate}}</td>
+        <td>{{claim.endDate}}</td>
+        <td>{{claim.expenseAmount}}</td>
+    </table> -->
+
+
+    <div class="container">
+        <form #updateForm=ngForm (ngSubmit)="update()" class="was-validated">
+            <div class="form-group">
+                Expense Code Id:<input type="number" name="expenseCodeId" id="expenseCodeId"
+                    [(ngModel)]="claim.expenseCodeId" #ecid="ngModel" class="form-control" readonly>
+
+            </div>
+            <div class="form-group">
+                Employee Id:<input type="number" name="employeeId" id="employeeId" [(ngModel)]="claim.employeeId"
+                    #eid="ngModel" class="form-control" readonly>
+
+            </div>
+            <div class="form-group">
+                Project Code: <select name="project" [(ngModel)]="claim.projectCode" #pro="ngModel" required>                  
+                    <option [ngValue]="claim.projectCode" selected *ngFor="let p of projects" [ngValue]="p">{{p.id}}</option>
+                </select>
+
+
+            </div>
+            <div class="form-group">
+                 Expense Code:<select name="expense" [(ngModel)]="claim.expenseCode" #exp="ngModel"  required>
+                    <option [ngValue]="claim.expenseCode" selected *ngFor="let p of expenses" [ngValue]="p">{{p.expenseCode}}</option>
+                </select>
+                   
+            </div>
+            <div class="form-group">
+                Start Date:<input type="date" name="startDate" id="startDate" [(ngModel)]="claim.startDate"
+                    #sdate="ngModel" class="form-control" (blur)="compareStart()" required>
+                <span class="invalid-feedback" *ngIf="sdate.errors?.required">Employee Birth Date is required</span>
+            </div>
+            <div class="form-group">
+                End Date:<input type="date" name="endDate" id="endDate" [(ngModel)]="claim.endDate" #edate="ngModel"
+                    class="form-control" (blur)="compareEnd()" required>
+                <span class="invalid-feedback" *ngIf="edate.errors?.required">Employee Birth Date is required</span>
+            </div>
+            <div class="form-group">
+                Expense Amount:<input type="number" name="expenseAmount" id="expenseAmount"
+                    [(ngModel)]="claim.expenseAmount" #amt="ngModel" class="form-control" required pattern="^[1-9]\d*$">
+                <span *ngIf="amt.touched&&amt.errors?.required" class="invalid-feedback">Expense Amount is
+                    required</span>
+                <span *ngIf="amt.dirty&&amt.errors?.pattern" class="alert alert-danger">Invalid Amount</span>
+            </div>
+            <br>
+            <button class="btn btn-primary" type="submit" [disabled]="updateForm.invalid">Update</button>
+        </form>
+
+    </div>
+</div>

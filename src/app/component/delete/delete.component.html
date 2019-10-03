@@ -1,0 +1,8 @@
+<div class="container" style="text-align: center">
+    <br>
+    <h5>Delete Expense</h5> 
+    <br>
+    <input class="form-control" type="number" #Deletedata required placeholder="Enter ExpenseID">
+    <br>
+    <button class="btn btn-primary" (click)="deleteExpense(Deletedata.value)">Delete</button>
+</div>

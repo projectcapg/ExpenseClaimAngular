@@ -1,0 +1,26 @@
+<div class="container">
+    <form #custForm="ngForm">
+        <table class="center">
+            <tr>
+                <td>
+                    <div class="form-control"><label>Expense Id</label></div>
+                </td>
+                <td>
+                    <div>
+                        <select name="expense" [(ngModel)]="expense" #exp="ngModel">
+                            <option *ngFor="let p of expenses" [ngValue]="p">{{p.expenseCode}}</option>
+                        </select>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<div class="container" *ngIf="flag">
+    <table class="table table-dark">
+        <td>{{expense.expenseCode}}</td>
+        <td>{{expense.expenseType}}</td>
+        <td>{{expense.expenseDescription}}</td>
+    </table>
+    <button class="btn btn-primary" (click)="AddClaim()">Add Expense Claim</button>
+</div>

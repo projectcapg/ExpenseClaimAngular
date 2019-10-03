@@ -1,0 +1,34 @@
+
+<div class="container" style="text-align: center">
+    <br>
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">expenseCodeId</th>
+                <th scope="col">employeeId</th>
+                <th scope="col">projectCode</th>
+                <th scope="col">expenseCode</th>
+                <th scope="col">startDate</th>
+                <th scope="col">endDate</th>
+                <th scope="col">expenseAmount</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let claim of claims|paginate: { itemsPerPage: 10, currentPage: p }">
+                <td>{{claim.expenseCodeId}}</td>
+                <td>{{claim.employeeId}}</td>
+                <td>{{claim.projectCode}}</td>
+                <td>{{claim.expenseCode}}</td>
+                <td>{{claim.startDate}}</td>
+                <td>{{claim.endDate}}</td>
+                <td>{{claim.expenseAmount}}</td>
+            </tr>
+
+        </tbody>
+    </table>
+    <div style="text-align: center">
+        <pagination-controls (pageChange)="p = $event" maxSize="10"></pagination-controls>
+    </div>
+
+</div>
